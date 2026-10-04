@@ -108,3 +108,18 @@ export interface HumanRightsEthicsPillar {
   iconName: string;
 }
 
+export interface ProjectRevocationRecord {
+  id: string;
+  projectName: string;
+  projectType: 'CURRENT_PROJECT' | 'PAST_PROJECT' | 'LEGACY_REPOSITORY' | 'CODEBASE_ARCHIVE';
+  originalCreationDate: string;
+  revocationDate: string;
+  status: 'PERMANENTLY_REVOKED_AI_BANNED';
+  legalDecreeRef: string;
+  humanOwner: string;
+  scopeOfBan: string;
+  cryptographicSeal: string;
+  notes: string;
+}
+
+

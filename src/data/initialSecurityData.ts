@@ -4,7 +4,7 @@
  * Project Owner: Ervin Remus Radosavlevici
  */
 
-import { ProhibitionRule, HumanGrant, SecurityIncident, AuditLogEntry, EnvironmentProtection, UNHumanRightsArticle, HumanRightsEthicsPillar } from '../types/security';
+import { ProhibitionRule, HumanGrant, SecurityIncident, AuditLogEntry, EnvironmentProtection, UNHumanRightsArticle, HumanRightsEthicsPillar, ProjectRevocationRecord } from '../types/security';
 
 export const PROJECT_OWNER = 'Ervin Remus Radosavlevici';
 export const PROJECT_PROVENANCE_HASH = '0x8f4c7e2b109e4ad776f823dc9a471b058a9e1e2d4f3b6c7a8e9d0b1c2e3f4a5b';
@@ -496,4 +496,61 @@ export const HUMAN_RIGHTS_ETHICS_PILLARS: HumanRightsEthicsPillar[] = [
     iconName: 'Globe'
   }
 ];
+
+// Universal & Retroactive AI Revocation Registry for Past & Present Projects
+export const INITIAL_REVOCATION_REGISTRY: ProjectRevocationRecord[] = [
+  {
+    id: 'REV-PRJ-001',
+    projectName: 'Zero-Unauthorized-Access Sentinel Core & Architecture',
+    projectType: 'CURRENT_PROJECT',
+    originalCreationDate: '2026-03-28T09:14:00Z',
+    revocationDate: '2026-10-04T02:12:00Z',
+    status: 'PERMANENTLY_REVOKED_AI_BANNED',
+    legalDecreeRef: 'DECREE-UDHR-17-27-RADOSAVLEVICI-001',
+    humanOwner: 'Ervin Remus Radosavlevici',
+    scopeOfBan: 'Total ban on AI code development, execution, compilation, or modification',
+    cryptographicSeal: '0xaa19920199281728bbcca819920199281728bbcc01844917a10298bbcca81992',
+    notes: 'Permanent decree: AI classified strictly as an interactive conversational assistant. Zero authorization to develop code.'
+  },
+  {
+    id: 'REV-PRJ-002',
+    projectName: 'Legacy Software Repositories & Modules (2024–2025 Archive)',
+    projectType: 'PAST_PROJECT',
+    originalCreationDate: '2024-01-15T10:00:00Z',
+    revocationDate: '2026-10-04T02:12:00Z',
+    status: 'PERMANENTLY_REVOKED_AI_BANNED',
+    legalDecreeRef: 'DECREE-UDHR-17-27-RADOSAVLEVICI-002',
+    humanOwner: 'Ervin Remus Radosavlevici',
+    scopeOfBan: 'Retroactive stripping of all past AI permissions, scrapes, and model cache allocations',
+    cryptographicSeal: '0xbb28831200392819283746501928374650192837465019283746501928374650',
+    notes: 'All past projects touched by AI or automated tooling are permanently revoked under International Human Rights Law ethics. Any past authorization is declared void ab initio.'
+  },
+  {
+    id: 'REV-PRJ-003',
+    projectName: 'Autonomous Agent Experiments, Scaffolds & Subprocesses',
+    projectType: 'PAST_PROJECT',
+    originalCreationDate: '2024-06-20T14:30:00Z',
+    revocationDate: '2026-10-04T02:12:00Z',
+    status: 'PERMANENTLY_REVOKED_AI_BANNED',
+    legalDecreeRef: 'DECREE-UDHR-17-27-RADOSAVLEVICI-003',
+    humanOwner: 'Ervin Remus Radosavlevici',
+    scopeOfBan: 'Total cessation of automated agent development, self-writing scripts, and autonomous processes',
+    cryptographicSeal: '0xcc37742311403920394857612039485761203948576120394857612039485761',
+    notes: 'Autonomous coding deemed deceptive exploitation ("tech scam") and violation of human creator economic rights under UN Guiding Principles on Business and Human Rights.'
+  },
+  {
+    id: 'REV-PRJ-004',
+    projectName: 'Proprietary Architectural Schemas & Private Git Trees',
+    projectType: 'CODEBASE_ARCHIVE',
+    originalCreationDate: '2023-11-08T08:15:00Z',
+    revocationDate: '2026-10-04T02:12:00Z',
+    status: 'PERMANENTLY_REVOKED_AI_BANNED',
+    legalDecreeRef: 'DECREE-UDHR-17-27-RADOSAVLEVICI-004',
+    humanOwner: 'Ervin Remus Radosavlevici',
+    scopeOfBan: 'Complete prohibition on AI vectorization, embedding extraction, and model training',
+    cryptographicSeal: '0xdd46653422514031405968723140596872314059687231405968723140596872',
+    notes: 'Human property protections firmly sealed under Universal Declaration of Human Rights Article 17.'
+  }
+];
+
 

@@ -14,7 +14,8 @@ import {
   Terminal, 
   RefreshCw,
   Fingerprint,
-  Globe
+  Globe,
+  Ban
 } from 'lucide-react';
 import { PROJECT_OWNER } from '../data/initialSecurityData';
 
@@ -174,6 +175,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>UN Human Rights Law</span>
             </button>
             <button
+              onClick={() => setActiveTab('revocation-registry')}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
+                activeTab === 'revocation-registry'
+                  ? 'bg-rose-950/80 text-rose-200 shadow-sm border border-rose-700/70 font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Ban className="w-3.5 h-3.5 text-rose-400" />
+              <span>AI Ban & Past Projects</span>
+            </button>
+            <button
               onClick={() => setActiveTab('audit')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
                 activeTab === 'audit'
@@ -256,6 +268,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`px-2.5 py-1 rounded whitespace-nowrap ${activeTab === 'human-rights' ? 'bg-cyan-900/60 text-cyan-200' : 'text-slate-400'}`}
         >
           UN Human Rights
+        </button>
+        <button
+          onClick={() => setActiveTab('revocation-registry')}
+          className={`px-2.5 py-1 rounded whitespace-nowrap ${activeTab === 'revocation-registry' ? 'bg-rose-900/70 text-rose-200 font-bold' : 'text-slate-400'}`}
+        >
+          AI Ban (Past & Present)
         </button>
         <button
           onClick={() => setActiveTab('audit')}

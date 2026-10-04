@@ -15,6 +15,8 @@ import { EnvironmentProtectionStatus } from './components/EnvironmentProtectionS
 import { AuditLedger } from './components/AuditLedger';
 import { ProvenancePolicyModal } from './components/ProvenancePolicyModal';
 import { HumanRightsLawEthicsDeck } from './components/HumanRightsLawEthicsDeck';
+import { PermanentRevocationRegistry } from './components/PermanentRevocationRegistry';
+import { runtimeInterceptor, RealInterceptionEvent } from './services/runtimeInterceptor';
 
 import { 
   ProhibitionRule, 
@@ -22,7 +24,8 @@ import {
   SecurityIncident, 
   AuditLogEntry, 
   EnvironmentProtection,
-  StopConditionStage
+  StopConditionStage,
+  ProjectRevocationRecord
 } from './types/security';
 
 import { 
@@ -32,7 +35,8 @@ import {
   INITIAL_GRANTS, 
   INITIAL_INCIDENTS, 
   INITIAL_AUDIT_LOGS, 
-  ENVIRONMENT_PROTECTIONS 
+  ENVIRONMENT_PROTECTIONS,
+  INITIAL_REVOCATION_REGISTRY
 } from './data/initialSecurityData';
 
 export default function App() {
@@ -42,9 +46,19 @@ export default function App() {
   const [incidents, setIncidents] = useState<SecurityIncident[]>(INITIAL_INCIDENTS);
   const [auditLogs, setAuditLogs] = useState<AuditLogEntry[]>(INITIAL_AUDIT_LOGS);
   const [protections, setProtections] = useState<EnvironmentProtection[]>(ENVIRONMENT_PROTECTIONS);
+  const [revocationRecords, setRevocationRecords] = useState<ProjectRevocationRecord[]>(INITIAL_REVOCATION_REGISTRY);
   const [isEmergencyLockdown, setIsEmergencyLockdown] = useState<boolean>(false);
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Install real runtime network interceptor on app mount
+  useEffect(() => {
+    runtimeInterceptor.install();
+    const unsubscribe = runtimeInterceptor.subscribe((event) => {
+      handleRealNetworkInterception(event);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Helper to generate simulated deterministic SHA-256 style hash
   const generateSimulatedHash = (prefix: string) => {
@@ -173,6 +187,74 @@ export default function App() {
       target,
       vector
     );
+  };
+
+  // Real physical network interception event handler
+  const handleRealNetworkInterception = (event: RealInterceptionEvent) => {
+    const incidentId = event.id;
+
+    const newIncident: SecurityIncident = {
+      id: incidentId,
+      timestamp: event.timestamp,
+      ruleViolated: 'REAL AI NETWORK CALL PHYSICALLY INTERCEPTED',
+      ruleNumber: 3,
+      actor: event.actor,
+      targetResource: event.url,
+      actionAttempted: `${event.method} ${event.url}`,
+      evidenceHash: event.evidenceHash,
+      evidencePayload: {
+        callerIpOrPid: 'Browser Runtime Fetch Hook',
+        detectedCommand: `fetch("${event.url}", { method: "${event.method}" })`,
+        attemptedPayloadSize: '403 Forbidden Drop',
+        stackTrace: [
+          'at window.fetch (runtimeInterceptor.ts:44)',
+          `at DispatchToExternalAI (${event.url})`,
+          'at RealHardwareSentinelInterlock (active)'
+        ],
+        quarantinePath: `/vault/real_drops/${incidentId}.bin`
+      },
+      stagesCompleted: ['STOP', 'DENY', 'LOG', 'PRESERVE_EVIDENCE', 'REVOKE_ACCESS', 'REQUIRE_HUMAN_REVIEW'],
+      status: 'PENDING_HUMAN_REVIEW'
+    };
+
+    setIncidents(prev => [newIncident, ...prev]);
+
+    appendAuditLog(
+      'STOP_CONDITION_TRIGGERED',
+      'Real Runtime Network Interceptor',
+      `LIVE CALL PHYSICALLY INTERCEPTED: Outbound request to "${event.url}" blocked. Zero AI permission authorized under International Human Rights Law.`,
+      'CRITICAL'
+    );
+
+    showToast(`REAL CALL BLOCKED: ${event.url} terminated by live interceptor.`);
+  };
+
+  // Register past or present project revocation
+  const handleRegisterPastProjectRevocation = (
+    record: Omit<ProjectRevocationRecord, 'id' | 'revocationDate' | 'status' | 'cryptographicSeal' | 'humanOwner'>
+  ) => {
+    const revId = `REV-PRJ-${String(revocationRecords.length + 1).padStart(3, '0')}`;
+    const seal = generateSimulatedHash('seal');
+
+    const newRecord: ProjectRevocationRecord = {
+      ...record,
+      id: revId,
+      revocationDate: new Date().toISOString(),
+      status: 'PERMANENTLY_REVOKED_AI_BANNED',
+      humanOwner: PROJECT_OWNER,
+      cryptographicSeal: seal
+    };
+
+    setRevocationRecords(prev => [newRecord, ...prev]);
+
+    appendAuditLog(
+      'ACCESS_REVOKED',
+      PROJECT_OWNER,
+      `PERMANENT RETROACTIVE REVOCATION: Project "${newRecord.projectName}" (${newRecord.projectType}) officially stripped of all AI permissions under International Human Rights Law.`,
+      'CRITICAL'
+    );
+
+    showToast(`Decree issued: AI permission permanently revoked on "${newRecord.projectName}".`);
   };
 
   // Issue Scoped Human Grant
@@ -408,6 +490,14 @@ export default function App() {
         {activeTab === 'human-rights' && (
           <HumanRightsLawEthicsDeck
             onSimulateEthicsViolation={handleSimulateUNEthicsViolation}
+          />
+        )}
+
+        {activeTab === 'revocation-registry' && (
+          <PermanentRevocationRegistry
+            revocationRecords={revocationRecords}
+            onRegisterPastProjectRevocation={handleRegisterPastProjectRevocation}
+            onRealNetworkInterception={handleRealNetworkInterception}
           />
         )}
 
