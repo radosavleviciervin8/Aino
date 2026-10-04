@@ -87,3 +87,24 @@ export interface EnvironmentProtection {
   metric: string;
   lastAudit: string;
 }
+
+export interface UNHumanRightsArticle {
+  id: string;
+  treaty: string;
+  articleNumber: string;
+  title: string;
+  principle: string;
+  aiLimitation: string;
+  status: 'COMPLIANT_ENFORCED';
+  unDocRef: string;
+}
+
+export interface HumanRightsEthicsPillar {
+  id: string;
+  title: string;
+  mandate: string;
+  legalBasis: string;
+  enforcement: string;
+  iconName: string;
+}
+

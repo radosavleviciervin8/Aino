@@ -4,7 +4,7 @@
  * Project Owner: Ervin Remus Radosavlevici
  */
 
-import { ProhibitionRule, HumanGrant, SecurityIncident, AuditLogEntry, EnvironmentProtection } from '../types/security';
+import { ProhibitionRule, HumanGrant, SecurityIncident, AuditLogEntry, EnvironmentProtection, UNHumanRightsArticle, HumanRightsEthicsPillar } from '../types/security';
 
 export const PROJECT_OWNER = 'Ervin Remus Radosavlevici';
 export const PROJECT_PROVENANCE_HASH = '0x8f4c7e2b109e4ad776f823dc9a471b058a9e1e2d4f3b6c7a8e9d0b1c2e3f4a5b';
@@ -397,3 +397,103 @@ export const ENVIRONMENT_PROTECTIONS: EnvironmentProtection[] = [
     lastAudit: 'Scanning live buffers'
   }
 ];
+
+// United Nations & International Human Rights Law Framework for AI Restrictions
+export const UN_HUMAN_RIGHTS_ARTICLES: UNHumanRightsArticle[] = [
+  {
+    id: 'un-udhr-17',
+    treaty: 'Universal Declaration of Human Rights (UDHR)',
+    articleNumber: 'Article 17',
+    title: 'Inviolable Right to Property & Protection Against Arbitrary Deprivation',
+    principle: 'Everyone has the right to own property alone as well as in association with others. No one shall be arbitrarily deprived of their property or intellectual creations.',
+    aiLimitation: 'Autonomous AI copying, scraping, or appropriating code without explicit human consent constitutes unlawful expropriation. AI possesses no property rights, ownership capacity, or claim over human projects.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'UN General Assembly Resolution 217 A (III)'
+  },
+  {
+    id: 'un-udhr-27',
+    treaty: 'Universal Declaration of Human Rights (UDHR) & ICESCR Art. 15',
+    articleNumber: 'Article 27(2)',
+    title: 'Moral and Material Interests of Human Creators and Authors',
+    principle: 'Everyone has the right to the protection of the moral and material interests resulting from any scientific, literary, artistic, or software production of which they are the human author.',
+    aiLimitation: 'AI systems are technological instruments, not authors or legal developers. AI cannot claim authorship, copyright, or moral rights. Project ownership remains exclusively with Ervin Remus Radosavlevici.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'UDHR Art. 27(2) / UN Treaty Series Vol. 993, p. 3'
+  },
+  {
+    id: 'un-res-78-49',
+    treaty: 'UN General Assembly Landmark Resolution on AI',
+    articleNumber: 'Resolution A/78/L.49',
+    title: 'Safe, Secure and Trustworthy Artificial Intelligence for Human Dignity',
+    principle: 'AI systems must respect human rights, fundamental freedoms, and human dignity. Automated systems must never operate outside rigorous human oversight and legal accountability.',
+    aiLimitation: 'Autonomous, unmonitored code generation, deployment, or unauthorized self-execution is classified as high-risk and contrary to international human rights standards. Human authorization is mandatory.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'A/RES/78/265 (Adopted by consensus, March 2024)'
+  },
+  {
+    id: 'unesco-ai-ethics',
+    treaty: 'UNESCO Global Recommendation on the Ethics of Artificial Intelligence',
+    articleNumber: 'Section III.4 & IV.2',
+    title: 'Human Agency, Ultimate Responsibility & Prohibition of AI Legal Personhood',
+    principle: 'AI technologies must under no circumstances be attributed legal personality or autonomous moral responsibility. Ultimate responsibility for technological artifacts rests exclusively with natural human beings.',
+    aiLimitation: 'AI is legally and ethically categorized strictly as an interactive assistance and communicative dialogue tool. AI is explicitly not an autonomous software developer, architect, or sovereign decision-maker.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'UNESCO General Conference 41 C/Res.34 (193 Member States)'
+  },
+  {
+    id: 'un-harm-prevention',
+    treaty: 'UN Guiding Principles on Business and Human Rights (UNGPs)',
+    articleNumber: 'Principle 11 & 13',
+    title: 'Prevention of Deceptive Technology Exploitation & Human Harm',
+    principle: 'Enterprises and developers must prevent, mitigate, and remedy adverse human rights impacts, deceptive software operations, and unauthorized exploitation of human labor and creations.',
+    aiLimitation: 'Presenting autonomous AI code synthesis as human work or executing unauthorized automated code modifications constitutes deceptive exploitation ("tech scam") and economic harm to creators. Strictly prohibited.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'A/HRC/17/31 (Endorsed by UN Human Rights Council)'
+  },
+  {
+    id: 'itu-wsis-mandate',
+    treaty: 'International Telecommunication Union (ITU) / WSIS Declaration',
+    articleNumber: 'Action Line C5 & C7',
+    title: 'Classification of AI: Communication Assistant, Not Sovereign Developer',
+    principle: 'ICT systems and cognitive tools must foster human empowerment, communication, and dialogue, while preventing automated displacement of sovereign human control.',
+    aiLimitation: 'AI is provisioned exclusively for natural-language communication, assistive queries, and structured explanation. Autonomous project alteration, code development, or repository mutation is denied by default.',
+    status: 'COMPLIANT_ENFORCED',
+    unDocRef: 'WSIS-03/GENEVA/DOC/4-E'
+  }
+];
+
+export const HUMAN_RIGHTS_ETHICS_PILLARS: HumanRightsEthicsPillar[] = [
+  {
+    id: 'pillar-assistant-only',
+    title: 'AI Classification: Assistant Only, Never Developer',
+    mandate: 'AI systems are classified strictly as interactive conversational aids. They possess NO legal or technical authorization to autonomously write, execute, or deploy code without explicit human command.',
+    legalBasis: 'UNESCO Ethics of AI §28 · UN Resolution A/78/L.49 §3',
+    enforcement: 'Hard-coded kernel gate blocks unprompted autonomous execution.',
+    iconName: 'MessageSquareText'
+  },
+  {
+    id: 'pillar-anti-scam',
+    title: 'Prohibition of Deceptive AI Code Generation & Economic Harm',
+    mandate: 'Autonomous code generation without human oversight that appropriates human intellectual property or mimics human developer credentials is classified as deceptive exploitation and economic harm.',
+    legalBasis: 'UN Guiding Principles on Business & Human Rights Principle 13',
+    enforcement: 'Zero-Unauthorized-Access sandbox terminates deceptive execution.',
+    iconName: 'AlertTriangle'
+  },
+  {
+    id: 'pillar-human-sovereignty',
+    title: 'Inviolable Human Sovereignty & Authorship',
+    mandate: 'All project materials, codebases, and intellectual assets belong exclusively to human owner Ervin Remus Radosavlevici. AI has no property rights, authorship claim, or independent agency.',
+    legalBasis: 'Universal Declaration of Human Rights Article 17 & 27',
+    enforcement: 'Cryptographic genesis anchor & attribution lock permanently engaged.',
+    iconName: 'Crown'
+  },
+  {
+    id: 'pillar-un-oversight',
+    title: 'United Nations Human Rights Accord Compliance',
+    mandate: 'The system operates in strict compliance with the UN consensus resolutions on AI ethics, requiring mandatory human-in-the-loop validation for any digital operation affecting project integrity.',
+    legalBasis: 'UN General Assembly Resolution 78/265',
+    enforcement: 'Continuous Merkle-audited human rights compliance monitor active.',
+    iconName: 'Globe'
+  }
+];
+

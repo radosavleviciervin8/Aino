@@ -13,7 +13,8 @@ import {
   FileText, 
   Terminal, 
   RefreshCw,
-  Fingerprint
+  Fingerprint,
+  Globe
 } from 'lucide-react';
 import { PROJECT_OWNER } from '../data/initialSecurityData';
 
@@ -162,6 +163,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               Environment
             </button>
             <button
+              onClick={() => setActiveTab('human-rights')}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
+                activeTab === 'human-rights'
+                  ? 'bg-cyan-950/70 text-cyan-200 shadow-sm border border-cyan-700/60'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
+              <span>UN Human Rights Law</span>
+            </button>
+            <button
               onClick={() => setActiveTab('audit')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
                 activeTab === 'audit'
@@ -238,6 +250,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`px-2.5 py-1 rounded whitespace-nowrap ${activeTab === 'protections' ? 'bg-slate-800 text-white' : 'text-slate-400'}`}
         >
           Environment
+        </button>
+        <button
+          onClick={() => setActiveTab('human-rights')}
+          className={`px-2.5 py-1 rounded whitespace-nowrap ${activeTab === 'human-rights' ? 'bg-cyan-900/60 text-cyan-200' : 'text-slate-400'}`}
+        >
+          UN Human Rights
         </button>
         <button
           onClick={() => setActiveTab('audit')}

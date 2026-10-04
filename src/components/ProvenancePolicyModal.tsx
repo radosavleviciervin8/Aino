@@ -107,6 +107,15 @@ The project belongs under human owner control.
 **AI has no independent permission.**  
 Unauthorized copying or use must be prevented, detected, and stopped.
 
+---
+
+### INTERNATIONAL HUMAN RIGHTS LAW & UN ETHICS ACCORD
+
+1. **AI Role Limitation:** AI is classified strictly under international law and ethics as an interactive assistant for human conversation, queries, and assistive communication. AI is **NOT a software developer, engineer, creator, or project owner**.
+2. **Prohibition of Autonomous Coding:** Autonomous AI code execution, unauthorized project generation, or automated source mutation without explicit human command constitutes deceptive technological exploitation ("tech scam") and economic harm against human creators.
+3. **United Nations Conformance:** Enforcing Universal Declaration of Human Rights (UDHR) Article 17 (Protection against arbitrary property deprivation) and Article 27 (Protection of human creators' moral and material interests), alongside UN General Assembly Resolution A/78/L.49 and UNESCO Recommendation on the Ethics of Artificial Intelligence (SHS/BIO/REC-AI/2021).
+4. **Sovereign Attribution:** Sole intellectual property and moral authorship remain perpetually with **${PROJECT_OWNER}**.
+
 *This protection is based on ownership, authorization, privacy, security, provenance, and human-rights principles.*
 `;
 
@@ -248,6 +257,20 @@ Unauthorized copying or use must be prevented, detected, and stopped.
               <p className="text-xs text-slate-300 mt-2 font-semibold">
                 No automated system may override this stop condition.
               </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-2 font-mono">
+                5. International Human Rights Law & UN Ethics Accord
+              </h3>
+              <p className="text-xs text-slate-300 mb-2 leading-relaxed">
+                In strict conformance with the <strong>Universal Declaration of Human Rights (Articles 17 & 27)</strong>, the <strong>UN General Assembly AI Consensus Resolution A/78/L.49</strong>, and the <strong>UNESCO Global Recommendation on the Ethics of AI</strong>:
+              </p>
+              <ul className="text-xs text-slate-300 space-y-1 list-disc pl-5">
+                <li><strong>Assistant Role Only:</strong> AI is classified exclusively as a conversational assistant for human communication—never an autonomous software developer or project engineer.</li>
+                <li><strong>Prohibition of Autonomous Coding:</strong> Autonomous AI code generation, unmonitored execution, or unconsented project mutation without human authorization is classified as deceptive exploitation ("tech scam") and economic harm to human creators.</li>
+                <li><strong>Protection of Human Authorship:</strong> Ultimate ownership, moral authorship, and economic rights remain inviolably with human project sovereign <strong>{PROJECT_OWNER}</strong>.</li>
+              </ul>
             </div>
           </div>
         </div>

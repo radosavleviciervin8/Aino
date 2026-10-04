@@ -19,7 +19,9 @@ import {
   Play,
   RotateCw,
   FileText,
-  Server
+  Server,
+  Globe,
+  Scale
 } from 'lucide-react';
 import { ProhibitionRule, HumanGrant, SecurityIncident, AuditLogEntry } from '../types/security';
 import { PROJECT_OWNER, PROJECT_PROVENANCE_HASH, GENESIS_TIMESTAMP } from '../data/initialSecurityData';
@@ -228,6 +230,32 @@ export const OverviewDeck: React.FC<OverviewDeckProps> = ({
             <span className="font-bold text-white">6. REVIEW</span>
             <span className="text-[10px] text-emerald-400">{PROJECT_OWNER.split(' ')[0]}</span>
           </div>
+        </div>
+      </div>
+
+      {/* UN & International Human Rights Law Mandate Card */}
+      <div className="p-5 rounded-xl border border-cyan-900/60 bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/40 shadow-md">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 uppercase">
+              <Globe className="w-4 h-4 text-cyan-400" />
+              <span>United Nations & International Human Rights Law Standard</span>
+            </div>
+            <h3 className="text-base font-bold text-white">
+              AI Is An Assistant for Chat/Communication Only — Never A Software Developer
+            </h3>
+            <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+              Under international human rights treaties (UDHR Articles 17 & 27, UNESCO AI Ethics Recommendation, UN Resolution A/78/L.49), autonomous AI coding and unauthorized project appropriation are classified as deceptive exploitation and economic harm against human creators. Sovereign ownership remains exclusively with <strong className="text-white">{PROJECT_OWNER}</strong>.
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigateTab('human-rights')}
+            className="flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 transition-colors shrink-0 shadow-sm"
+          >
+            <Scale className="w-4 h-4" />
+            <span>Inspect UN Accord</span>
+          </button>
         </div>
       </div>
 

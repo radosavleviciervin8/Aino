@@ -14,6 +14,7 @@ import { QuarantineReviewDeck } from './components/QuarantineReviewDeck';
 import { EnvironmentProtectionStatus } from './components/EnvironmentProtectionStatus';
 import { AuditLedger } from './components/AuditLedger';
 import { ProvenancePolicyModal } from './components/ProvenancePolicyModal';
+import { HumanRightsLawEthicsDeck } from './components/HumanRightsLawEthicsDeck';
 
 import { 
   ProhibitionRule, 
@@ -155,6 +156,22 @@ export default function App() {
       rule.probePayload.actor,
       rule.probePayload.target,
       rule.probePayload.vector
+    );
+  };
+
+  // Trigger violation simulation from UN Human Rights & Ethics deck
+  const handleSimulateUNEthicsViolation = (
+    treatyTitle: string,
+    actor: string,
+    target: string,
+    vector: string
+  ) => {
+    setActiveTab('stop-condition');
+    handleTriggerStopCondition(
+      `UN Human Rights Violation: Unauthorized Autonomous Coding (${treatyTitle})`,
+      actor,
+      target,
+      vector
     );
   };
 
@@ -385,6 +402,12 @@ export default function App() {
             onTriggerScan={handleTriggerIntegrityScan}
             onTakeBackupSnapshot={handleTakeBackup}
             onRotateCredentials={handleCycleCredentials}
+          />
+        )}
+
+        {activeTab === 'human-rights' && (
+          <HumanRightsLawEthicsDeck
+            onSimulateEthicsViolation={handleSimulateUNEthicsViolation}
           />
         )}
 
