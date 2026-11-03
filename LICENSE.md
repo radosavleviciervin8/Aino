@@ -89,7 +89,7 @@
 
 9.5 **No waiver.** A failure to enforce a provision is not a waiver unless made in a signed writing.
 
-9.6 **Notices:** Notices must be sent to the addresses or email addresses the parties designate in the signed schedule, subject to any mandatory legal requirements.
+9.6 **Notices.** Notices must be sent to the addresses or email addresses the parties designate in the signed schedule, subject to any mandatory legal requirements.
 
 ## 10. Governing law and dispute resolution — must be completed
 
